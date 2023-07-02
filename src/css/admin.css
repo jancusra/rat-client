@@ -1,0 +1,58 @@
+html, body,
+#root { 
+    height: 100%; 
+    width: 100%; 
+    /*background: #494b5a;*/
+}
+
+/* menu tree */
+.MuiList-root .MuiListSubheader-root {
+    line-height: 2em;
+}
+
+.MuiList-root .MuiListItemButton-root {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.MuiList-root .MuiListItemIcon-root {
+    min-width: 42px;
+}
+
+/* admin layout */
+.admin-menu {
+    position: fixed;
+    top: 32px;
+    bottom: 0;
+    left: 0;
+    float: none;
+    width: 300px;
+}
+
+.admin-content {
+    position: fixed;
+    top: 32px;
+    bottom: 0;
+    left: 300px;
+    right: 0;
+    float: none;
+    padding: 10px;
+}
+
+.rat-common-form .form-final-buttons button {
+    width: 49%;
+    margin: 20px 0.5% 0 0.5%;
+}
+
+.MuiDataGrid-main .MuiAutocomplete-root .MuiOutlinedInput-notchedOutline {
+    border-width: 0;
+}
+
+.MuiDataGrid-main .MuiAutocomplete-root .MuiInputBase-root {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.MuiDataGrid-main .MuiDataGrid-row {
+    min-height: 52px !important;
+}

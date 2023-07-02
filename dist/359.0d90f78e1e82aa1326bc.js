@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrat_react=self.webpackChunkrat_react||[]).push([[359],{9359:function(t,e,r){r.r(e);var a=r(9250),n=r(5871),u=r(5893);e.default=function(){var t=(0,a.UO)();return(0,u.jsx)(n.Z,{entityName:"User",entityId:t.id})}}}]);

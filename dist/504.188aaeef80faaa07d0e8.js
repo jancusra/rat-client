@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrat_react=self.webpackChunkrat_react||[]).push([[504],{7504:function(e,t,r){r.r(t);var n=r(5893);t.default=function(){return(0,n.jsx)("div",{children:"Plugin testing page - merging routes."})}}}]);
