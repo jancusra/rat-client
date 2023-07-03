@@ -1,7 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-const Admin = React.lazy(() => import('ratAdmin/index'));
+const AdminLayout = React.lazy(() => import('ratAdmin/index'));
+const Dashboard = React.lazy(() => import('ratAdmin/Dashboard'));
 const Users = React.lazy(() => import('ratAdmin/users/List'));
 const UsersCE = React.lazy(() => import('ratAdmin/users/CreateEdit'));
 const Roles = React.lazy(() => import('ratAdmin/roles/List'));
@@ -11,8 +12,8 @@ const NotFound = React.lazy(() => import('ratWeb/NotFound'));
 function RatAdminRoutes() {
     return (
       <Routes>
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/admin/*" element={<Admin />}>
+        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin/*" element={<AdminLayout />}>
           <Route path="users" element={<Users />} />
           <Route path="users/:id" element={<UsersCE />} />
           <Route path="roles" element={<Roles />} />

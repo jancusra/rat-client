@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import RatTreeMenu from 'ratComponents/RatTreeMenu';
 import 'ratStyles/admin';
 
-function RatAdminDashboard() {
+function RatAdminLayout() {
     return (
         <>
             <div className="admin-menu">
@@ -15,4 +15,4 @@ function RatAdminDashboard() {
     );
 }
 
-export default RatAdminDashboard;
+export default RatAdminLayout;
