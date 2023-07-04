@@ -22,11 +22,7 @@ function RatApp() {
     }
 
     function getLocales() {
-        var localeSource = "/locale/get";
-
-        if (isAdmin) {
-            localeSource = "/locale/getadmin";
-        }
+        var localeSource = "/localization/get";
 
         axios.post(localeSource)
             .then(function (response) {

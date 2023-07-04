@@ -12,8 +12,8 @@ const NotFound = React.lazy(() => import('ratWeb/NotFound'));
 function RatAdminRoutes() {
     return (
       <Routes>
-        <Route path="/admin" element={<Dashboard />} />
-        <Route path="/admin/*" element={<AdminLayout />}>
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
           <Route path="users" element={<Users />} />
           <Route path="users/:id" element={<UsersCE />} />
           <Route path="roles" element={<Roles />} />
