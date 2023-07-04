@@ -83,8 +83,8 @@
 
 .rat-web-header div {
   display: inline-block;
-  padding: 5px 0;
   margin: 0 0 0 10px;
+  padding: 5px 0;
   color: #fff;
   cursor: pointer;
 }
@@ -95,6 +95,16 @@
 
 .rat-web-header .admin-link {
   color: yellow;
+}
+
+.language-panel {
+  float: right;
+}
+
+.language-image {
+  width: 25px;
+  height: 25px;
+  margin: 0 8px 0 0;
 }
 
 /* common form styles */

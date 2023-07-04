@@ -15,16 +15,20 @@ function RatApp() {
     const [locales, setLocales] = useState({});
 
     function getUserData() {
-        axios.post("/user/getCurrentUserData")
+        axios.get("/user/getCurrentUserData")
             .then(function (response) {
                 setUserData(response.data);
             });
     }
 
     function getLocales() {
-        var localeSource = "/localization/get";
+        var langId = localStorage.getItem("languageId");
 
-        axios.post(localeSource)
+        if(langId == null) {
+            langId = 0;
+        }
+
+        axios.get("/localization/getByLanguageId?languageId=" + langId)
             .then(function (response) {
                 setLocales(response.data);
             });

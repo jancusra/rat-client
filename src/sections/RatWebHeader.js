@@ -7,12 +7,18 @@ function RatWebHeader() {
     const user = useContext(RatUser);
     const locales = useContext(RatLocales);
 
+    function setLanguage(id) {
+        localStorage.setItem("languageId", id);
+    }
+
     function logout() {
         axios.post("/auth/logout")
             .then(function () {
                 location.href = "/";
             });
-      }
+    }
+
+    console.log(user);
 
     return (
         <div className="rat-web-header">
@@ -29,6 +35,16 @@ function RatWebHeader() {
             {user.data.isAdmin ?
                 <div className="admin-link" onClick={() => {location.href = "/admin"}}>
                     {locales.Administration}
+                </div>
+            : null}
+            {Array.isArray(user.data.languages) && user.data.languages.length > 1 ?
+                <div className="language-panel">
+                    {user.data.languages.map((language) =>
+                        <img key={language.name} className="language-image" 
+                            src={require("./../images/flags/" + language.twoLetterCode + ".svg")}
+                            alt={language.name}
+                            onClick={() => setLanguage(language.id)}></img>
+                    )}
                 </div>
             : null}
         </div>
