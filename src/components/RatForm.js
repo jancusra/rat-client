@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
+import RatLocales from 'ratContexts/RatLocales';
 
 function RatForm(props) {
     const [commonMessage, setMessage] = useState("");
+    const locales = useContext(RatLocales);
     const navigate = useNavigate();
 
     function handleSubmit(e) {
@@ -52,7 +54,7 @@ function RatForm(props) {
                         variant="contained"
                         color="error"
                         onClick={() => handleCancel()}>
-                            Cancel
+                            {locales.Cancel}
                     </Button>
                     : null}
             </div>

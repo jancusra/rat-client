@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
@@ -7,11 +7,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RatIcon from '../components/RatIcon';
 import RatMultiSelect from '../components/RatMultiSelect';
+import RatLocales from '../contexts/RatLocales';
 
 function RatGrid(props) {
   const navigate = useNavigate();
   const [columns, setColumns] = useState<GridColDef[]>([]);
   const [gridData, setGridData] = useState([]);
+  const locales = useContext(RatLocales);
   const hiddenColumns = {}, optionsData = {};
 
   function lowerFirstLetter(str) {
@@ -38,7 +40,7 @@ function RatGrid(props) {
         response.data.columns.forEach(function (column) {
           var columnObject = {
             field: lowerFirstLetter(column.name),
-            headerName: column.name
+            headerName: locales[column.name]
           };
 
           if (columnObject.field == "id" || column.hidden)
@@ -90,7 +92,7 @@ function RatGrid(props) {
                   startIcon={<EditIcon />}
                   disabled={row.hasOwnProperty('isSystemEntry') ? row.isSystemEntry : false}
                   onClick={() => editRedirect(row.id)}>
-                  Edit
+                  {locales.Edit}
                 </Button>
               );
               columnObject["width"] = 150;
@@ -103,7 +105,7 @@ function RatGrid(props) {
                   startIcon={<DeleteIcon />}
                   disabled={row.hasOwnProperty('isSystemEntry') ? row.isSystemEntry : false}
                   onClick={() => deleteEntry(row.id)}>
-                  Delete
+                  {locales.Delete}
                 </Button>
               );
               columnObject["width"] = 150;

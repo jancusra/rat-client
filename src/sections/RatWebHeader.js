@@ -9,6 +9,7 @@ function RatWebHeader() {
 
     function setLanguage(id) {
         localStorage.setItem("languageId", id);
+        window.location.reload();
     }
 
     function logout() {
@@ -18,8 +19,6 @@ function RatWebHeader() {
             });
     }
 
-    console.log(user);
-
     return (
         <div className="rat-web-header">
             {user.data.email ?
@@ -28,7 +27,7 @@ function RatWebHeader() {
                         {user.data.email}
                     </div>
                     <div className="logout-user" onClick={logout}>
-                        Logout
+                        {locales.Logout}
                     </div>
                 </>
             : null}

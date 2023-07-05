@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -6,10 +6,12 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
 import RatIcon from 'ratComponents/RatIcon';
+import RatLocales from 'ratContexts/RatLocales';
 import 'ratStyles/admin';
 
 function RatTreeMenuItem(props) {
     const [open, setOpen] = useState(true);
+    const locales = useContext(RatLocales);
     const navigate = useNavigate();
 
     function handleClick (url) {
@@ -26,7 +28,7 @@ function RatTreeMenuItem(props) {
             <ListItemIcon>
                 <RatIcon name={props.menuData.icon} />
             </ListItemIcon>
-            <ListItemText primary={props.menuData.title} />
+            <ListItemText primary={locales[props.menuData.title]} />
             {props.menuData.childMenuItems.length > 0 && <>
                 {open ? <RatIcon name="expand_less" />
                     : <RatIcon name="expand_more" />
@@ -41,7 +43,7 @@ function RatTreeMenuItem(props) {
                                 <ListItemIcon>
                                     <RatIcon name={menuItem.icon} />
                                 </ListItemIcon>
-                                <ListItemText primary={menuItem.title} />
+                                <ListItemText primary={locales[menuItem.title]} />
                             </ListItemButton>
                         );
                     })}

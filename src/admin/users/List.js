@@ -1,9 +1,12 @@
+import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
 import RatGrid from 'ratComponents/RatGrid';
+import RatLocales from 'ratContexts/RatLocales';
 
 function Users() {
     const navigate = useNavigate();
+    const locales = useContext(RatLocales);
 
     return (
         <>
@@ -11,7 +14,7 @@ function Users() {
                 color="success"
                 onClick={() => {
                     navigate("./0");
-                  }}>Create new</Button>
+                  }}>{locales.CreateNew}</Button>
             <RatGrid entityName="User" />
         </>
     );

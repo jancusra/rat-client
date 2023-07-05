@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import RatForm from 'ratComponents/RatForm';
@@ -6,10 +6,12 @@ import RatCheckbox from 'ratComponents/RatCheckbox';
 import RatMultiSelect from 'ratComponents/RatMultiSelect';
 import RatSelect from 'ratComponents/RatSelect';
 import RatTextField from 'ratComponents/RatTextField';
+import RatLocales from 'ratContexts/RatLocales';
 
 function RatCommonForm(props) {
     const [formData, setFormData] = useState([]);
     const [validationData, setValidationData] = useState({});
+    const locales = useContext(RatLocales);
     const navigate = useNavigate();
 
     function getFormData() {
@@ -60,7 +62,7 @@ function RatCommonForm(props) {
             class="rat-common-form"
             apiSource="/entity/saveentity"
             entityName={props.entityName}
-            buttonContent="Save"
+            buttonContent={locales.Save}
             showCancelButton={true}
             formData={formData}
             formErrors={formErrors}
@@ -71,13 +73,13 @@ function RatCommonForm(props) {
                         'Boolean': <RatCheckbox
                             key={formEntry.name}
                             name={formEntry.name}
-                            label={formEntry.name}
+                            label={locales[formEntry.name]}
                             value={formEntry.value}
                             callback={updateField} />,
                         'String': <RatTextField
                             key={formEntry.name}
                             name={formEntry.name}
-                            label={formEntry.name}
+                            label={locales[formEntry.name]}
                             value={formEntry.value == null ? '' : formEntry.value}
                             error={validationData[formEntry.name].error}
                             errorMessage={validationData[formEntry.name].message}
@@ -85,14 +87,14 @@ function RatCommonForm(props) {
                         'Enum': <RatSelect
                             key={formEntry.name}
                             name={formEntry.name}
-                            label={formEntry.name}
+                            label={locales[formEntry.name]}
                             value={formEntry.value}
                             selectData={formEntry.selectOptions}
                             callback={updateField} />,
                         'MappedMultiSelect': <RatMultiSelect
                             key={formEntry.name}
                             name={formEntry.name}
-                            label={formEntry.name}
+                            label={locales[formEntry.name]}
                             value={formEntry.value}
                             selectData={formEntry.selectOptions}
                             callback={updateField} />
