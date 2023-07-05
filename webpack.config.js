@@ -31,6 +31,7 @@ module.exports = {
   },
   resolve: {
     alias: {
+      ratRoot: path.join(paths.src, ''),
       ratAdmin: path.join(paths.src, 'admin'),
       ratComponents: path.join(paths.src, 'components'),
       ratContexts: path.join(paths.src, 'contexts'),

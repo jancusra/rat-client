@@ -4,6 +4,7 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import RatLocales from 'ratContexts/RatLocales';
+import { GetCurrentLanguageId } from 'ratRoot/Utils';
 
 function RatForm(props) {
     const [commonMessage, setMessage] = useState("");
@@ -21,7 +22,9 @@ function RatForm(props) {
             });
         }
 
-        var data = props.entityName ? { entityName: props.entityName, data: reducedFormData } : props.formData;
+        var data = props.entityName 
+            ? { entityName: props.entityName, data: reducedFormData, languageId: GetCurrentLanguageId() } 
+            : props.formData;
 
         axios.post(props.apiSource, data)
             .then(function (result) {

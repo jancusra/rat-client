@@ -6,6 +6,7 @@ import RatWebRoutes from './web/RatWebRoutes';
 import RatUser from 'ratContexts/RatUser';
 import RatLocales from 'ratContexts/RatLocales';
 import RatWebHeader from 'ratSections/RatWebHeader';
+import { GetCurrentLanguageId } from 'ratRoot/Utils';
 
 axios.defaults.baseURL = "http://localhost:47050/api";
 
@@ -22,13 +23,7 @@ function RatApp() {
     }
 
     function getLocales() {
-        var langId = localStorage.getItem("languageId");
-
-        if(langId == null) {
-            langId = 0;
-        }
-
-        axios.get("/localization/getByLanguageId?languageId=" + langId)
+        axios.get("/localization/getByLanguageId?languageId=" + GetCurrentLanguageId())
             .then(function (response) {
                 setLocales(response.data);
             });
