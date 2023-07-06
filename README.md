@@ -7,4 +7,5 @@
 * Users and roles management
 * Common forms and controls
 * Super fast administration view definition
-* optimized distribution with report page
+* Optimized distribution with report page
+* Without Redux - it's overkill here
