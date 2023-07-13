@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrat_react=self.webpackChunkrat_react||[]).push([[864],{7220:function(e,t,n){n.r(t);var r=n(5893);t.default=function(){return(0,r.jsx)("div",{children:"Page not found!"})}}}]);

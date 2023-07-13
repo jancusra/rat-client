@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrat_react=self.webpackChunkrat_react||[]).push([[6],{5216:function(e,t,r){r.r(t);var a=r(9250),n=r(5871),u=r(5893);t.default=function(){var e=(0,a.UO)();return(0,u.jsx)(n.Z,{entityName:"UserRole",entityId:e.id})}}}]);
