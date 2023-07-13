@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrat_react=self.webpackChunkrat_react||[]).push([[57],{4057:function(a,c,s){var e=s(5893);c.Z=function(a){return(0,e.jsx)("span",{className:a.class?"material-icons ".concat(a.class):"material-icons",children:a.name})}}}]);

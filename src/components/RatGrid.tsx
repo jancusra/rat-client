@@ -8,6 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import RatIcon from '../components/RatIcon';
 import RatMultiSelect from '../components/RatMultiSelect';
 import RatLocales from '../contexts/RatLocales';
+import { IconsByString } from '../fonts/IconsByString';
 
 function RatGrid(props) {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ function RatGrid(props) {
         response.data.columns.forEach(function (column) {
           var columnObject = {
             field: lowerFirstLetter(column.name),
-            headerName: locales[column.name]
+            headerName: column.entryType != "EnumIcon" ? locales[column.name] : ""
           };
 
           if (columnObject.field == "id" || column.hidden)
@@ -73,6 +74,15 @@ function RatGrid(props) {
               columnObject["valueGetter"] = getEnumName;
               columnObject["flex"] = 1;
               break; 
+            }
+            case "EnumIcon": {
+              optionsData[columnObject.field] = column.selectOptions;
+              columnObject["renderCell"] = ({value}) => (
+                <RatIcon class={lowerFirstLetter(optionsData[columnObject.field][value])} 
+                  name={IconsByString[optionsData[columnObject.field][value]]} />
+              );
+              columnObject["width"] = 50;
+              break;
             }
             case "MappedMultiSelect": {
               columnObject["renderCell"] = ({row}) => (

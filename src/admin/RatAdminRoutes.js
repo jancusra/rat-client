@@ -7,6 +7,7 @@ const Users = React.lazy(() => import('ratAdmin/users/List'));
 const UsersCE = React.lazy(() => import('ratAdmin/users/CreateEdit'));
 const Roles = React.lazy(() => import('ratAdmin/roles/List'));
 const RolesCE = React.lazy(() => import('ratAdmin/roles/CreateEdit'));
+const Logs = React.lazy(() => import('ratAdmin/logs/List'));
 const NotFound = React.lazy(() => import('ratWeb/NotFound'));
 
 function RatAdminRoutes() {
@@ -18,6 +19,7 @@ function RatAdminRoutes() {
           <Route path="users/:id" element={<UsersCE />} />
           <Route path="roles" element={<Roles />} />
           <Route path="roles/:id" element={<RolesCE />} />
+          <Route path="logs" element={<Logs />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

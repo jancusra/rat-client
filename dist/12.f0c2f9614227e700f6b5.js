@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrat_react=self.webpackChunkrat_react||[]).push([[12],{8012:function(e,n,r){r.r(n);var t=r(9250),a=r(5305),c=r(8328),s=r(5893);n.default=function(){var e=(0,t.s0)();return(0,s.jsxs)(s.Fragment,{children:[(0,s.jsx)(a.Z,{variant:"contained",color:"success",onClick:function(){e("./0")},children:"Create new"}),(0,s.jsx)(c.Z,{entityName:"User"})]})}}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrat_react=self.webpackChunkrat_react||[]).push([[486],{8486:function(e,t,n){n.r(t);var r=n(7294),a=n(9250),s=n(6925),u=n(7563),c=n(5893);t.default=function(){return(0,a.s0)(),(0,r.useContext)(u.Z),(0,c.jsx)(c.Fragment,{children:(0,c.jsx)(s.Z,{entityName:"Log"})})}}}]);

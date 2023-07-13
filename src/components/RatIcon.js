@@ -1,6 +1,6 @@
 
 function RatIcon(props) {
-    return <span className="material-icons">
+    return <span className={props.class ? `material-icons ${props.class}` : "material-icons"}>
         {props.name}
     </span>
 }
