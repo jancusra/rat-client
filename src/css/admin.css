@@ -57,6 +57,16 @@ html, body,
     min-height: 52px !important;
 }
 
+/* detail */
+.detail-name {
+    width: 150px;
+    font-weight: bold;
+}
+
+.table-detail td {
+    padding: 5px 0;
+}
+
 /* colored icons */
 .material-icons.debug {
     color: #808080

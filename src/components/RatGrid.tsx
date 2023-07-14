@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
+import OpenInBrowserIcon from '@mui/icons-material/OpenInBrowser';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RatIcon from '../components/RatIcon';
@@ -21,7 +22,7 @@ function RatGrid(props) {
     return str.charAt(0).toLowerCase() + str.slice(1);
   }
 
-  function editRedirect(id) {
+  function entityRedirect(id) {
     var url = location.pathname.replace(/\/$/, "");
     navigate(url + "/" + id);
   }
@@ -95,13 +96,25 @@ function RatGrid(props) {
               columnObject["width"] = 600;
               break;
             }
+            case "ShowDetailButton": {
+              columnObject["renderCell"] = ({row}) => (
+                <Button variant="contained"
+                  color="primary"
+                  startIcon={<OpenInBrowserIcon />}
+                  onClick={() => entityRedirect(row.id)}>
+                  {locales.Detail}
+                </Button>
+              );
+              columnObject["width"] = 150;
+              break;
+            }
             case "EditInViewButton": {
               columnObject["renderCell"] = ({row}) => (
                 <Button variant="contained"
                   color="secondary"
                   startIcon={<EditIcon />}
                   disabled={row.hasOwnProperty('isSystemEntry') ? row.isSystemEntry : false}
-                  onClick={() => editRedirect(row.id)}>
+                  onClick={() => entityRedirect(row.id)}>
                   {locales.Edit}
                 </Button>
               );
