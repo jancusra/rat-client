@@ -25,36 +25,35 @@ function Dashboard() {
     };
 
     return (
-        <div className="admin-content">
-            <Stack spacing={2} sx={{ width: '100%' }}>
-                <Stack sx={{ width: '100%' }} spacing={2}>
-                    <Alert severity="error">
-                        <AlertTitle>{locales.Error}</AlertTitle>
-                        {locales.Message} ... <strong>{locales.CheckItOut}!</strong>
-                    </Alert>
-                    <Alert severity="warning">
-                        <AlertTitle>{locales.Warning}</AlertTitle>
-                        {locales.Message} ... <strong>{locales.CheckItOut}!</strong>
-                    </Alert>
-                    <Alert severity="info">
-                        <AlertTitle>{locales.Info}</AlertTitle>
-                        {locales.Message} ... <strong>{locales.CheckItOut}!</strong>
-                    </Alert>
-                    <Alert severity="success">
-                        <AlertTitle>{locales.Error}</AlertTitle>
-                        {locales.Message} ... <strong>{locales.CheckItOut}!</strong>
-                    </Alert>
-                </Stack>
-                <Button variant="outlined" onClick={handleClick}>
-                    {locales.Open} {locales.Success}
-                </Button>
-                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                        {locales.Message} {locales.Success}!
-                    </Alert>
-                </Snackbar>
+        <Stack spacing={2} sx={{ width: '100%' }}>
+            <Stack sx={{ width: '100%' }} spacing={2}>
+                <Alert severity="error">
+                    <AlertTitle>{locales.Error}</AlertTitle>
+                    {locales.Message} ... <strong>{locales.CheckItOut}!</strong>
+                </Alert>
+                <Alert severity="warning">
+                    <AlertTitle>{locales.Warning}</AlertTitle>
+                    {locales.Message} ... <strong>{locales.CheckItOut}!</strong>
+                </Alert>
+                <Alert severity="info">
+                    <AlertTitle>{locales.Info}</AlertTitle>
+                    {locales.Message} ... <strong>{locales.CheckItOut}!</strong>
+                </Alert>
+                <Alert severity="success">
+                    <AlertTitle>{locales.Error}</AlertTitle>
+                    {locales.Message} ... <strong>{locales.CheckItOut}!</strong>
+                </Alert>
             </Stack>
-        </div>
+            <Button variant="outlined" onClick={handleClick}>
+                {locales.Open} {locales.Success}
+            </Button>
+            <Snackbar open={open} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} 
+                    autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    {locales.Message} {locales.Success}!
+                </Alert>
+            </Snackbar>
+        </Stack>
     );
 }
 

@@ -6,12 +6,11 @@ import RatWebRoutes from './web/RatWebRoutes';
 import RatUser from 'ratContexts/RatUser';
 import RatLocales from 'ratContexts/RatLocales';
 import RatWebHeader from 'ratSections/RatWebHeader';
-import { GetCurrentLanguageId } from 'ratRoot/Utils';
+import { IsAdminLayout, GetCurrentLanguageId } from 'ratRoot/Utils';
 
 axios.defaults.baseURL = "http://localhost:47050/api";
 
 function RatApp() {
-    const isAdmin = window.location.pathname.startsWith("/admin");
     const [userData, setUserData] = useState({});
     const [locales, setLocales] = useState({});
 
@@ -45,7 +44,7 @@ function RatApp() {
                 <BrowserRouter>
                     <RatWebHeader/>
                     <Suspense fallback={<div>Loading...</div>}>
-                    { isAdmin ? <RatAdminRoutes/> : <RatWebRoutes/> }
+                    { IsAdminLayout() ? <RatAdminRoutes/> : <RatWebRoutes/> }
                     </Suspense>
                 </BrowserRouter>
             </RatLocales.Provider>

@@ -1,3 +1,7 @@
+export const IsAdminLayout = () => {
+    return window.location.pathname.startsWith("/admin");
+};
+
 export const GetCurrentLanguageId = () => {
     var langId = localStorage.getItem("languageId");
 

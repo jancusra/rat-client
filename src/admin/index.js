@@ -3,12 +3,16 @@ import RatTreeMenu from 'ratComponents/RatTreeMenu';
 import 'ratStyles/admin';
 
 function RatAdminLayout() {
+    const hiddenAdminMenu = localStorage.getItem("hiddenAdminMenu") == "true";
+
     return (
         <>
-            <div className="admin-menu">
+            {!hiddenAdminMenu 
+            ? <div className="admin-menu">
                 <RatTreeMenu apiSource="/menu/getmenu" />
             </div>
-            <div className="admin-content">
+            : null}
+            <div className="admin-content" style={hiddenAdminMenu ? { left:'0' } : {}} >
                 <Outlet />
             </div>
         </>

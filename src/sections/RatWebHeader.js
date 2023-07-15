@@ -2,10 +2,21 @@ import { useContext } from 'react';
 import axios from 'axios';
 import RatUser from 'ratContexts/RatUser';
 import RatLocales from 'ratContexts/RatLocales';
+import RatIcon from 'ratComponents/RatIcon';
+import { IsAdminLayout } from 'ratRoot/Utils';
 
 function RatWebHeader() {
     const user = useContext(RatUser);
     const locales = useContext(RatLocales);
+
+    function changeAdminMenu() {
+        if (localStorage.getItem("hiddenAdminMenu") == "true") {
+            localStorage.setItem("hiddenAdminMenu", false);
+        } else {
+            localStorage.setItem("hiddenAdminMenu", true);
+        }
+        window.location.reload();        
+    }
 
     function setLanguage(id) {
         localStorage.setItem("languageId", id);
@@ -21,6 +32,11 @@ function RatWebHeader() {
 
     return (
         <div className="rat-web-header">
+            {IsAdminLayout() ?
+                <div className="admin-menu-icon" onClick={changeAdminMenu}>
+                    <RatIcon name="menu" />
+                </div>
+                : null}
             {user.data.email ?
                 <>
                     <div className="logged-user" onClick={() => {location.href = "/"}}>

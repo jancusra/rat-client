@@ -77,14 +77,17 @@
 
 /* web header */
 .rat-web-header {
-  height: 32px;
+  height: 40px;
   background-color: #4d4f5e;
+  vertical-align: top;
 }
 
 .rat-web-header div {
   display: inline-block;
+  vertical-align: top;
   margin: 0 0 0 10px;
-  padding: 5px 0;
+  padding: 10px 0 2px;
+  height: 28px;
   color: #fff;
   cursor: pointer;
 }
