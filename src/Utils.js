@@ -11,4 +11,11 @@ export const GetCurrentLanguageId = () => {
 
     return langId;
  };
- 
+
+ export const ChangeStorageItemBoolState = (storageItemKey) => {
+    if (localStorage.getItem(storageItemKey) == "true") {
+        localStorage.setItem(storageItemKey, false);
+    } else {
+        localStorage.setItem(storageItemKey, true);
+    }
+};

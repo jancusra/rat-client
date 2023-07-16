@@ -3,18 +3,14 @@ import axios from 'axios';
 import RatUser from 'ratContexts/RatUser';
 import RatLocales from 'ratContexts/RatLocales';
 import RatIcon from 'ratComponents/RatIcon';
-import { IsAdminLayout } from 'ratRoot/Utils';
+import { IsAdminLayout, ChangeStorageItemBoolState } from 'ratRoot/Utils';
 
 function RatWebHeader() {
     const user = useContext(RatUser);
     const locales = useContext(RatLocales);
 
     function changeAdminMenu() {
-        if (localStorage.getItem("hiddenAdminMenu") == "true") {
-            localStorage.setItem("hiddenAdminMenu", false);
-        } else {
-            localStorage.setItem("hiddenAdminMenu", true);
-        }
+        ChangeStorageItemBoolState("hiddenAdminMenu");
         window.location.reload();        
     }
 
