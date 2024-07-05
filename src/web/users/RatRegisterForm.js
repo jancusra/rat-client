@@ -28,6 +28,7 @@ function RatRegisterForm() {
             class="rat-register-box"
             apiSource="/user/register"
             buttonContent={locales.Register}
+            showBackButton={true}
             formData={formData}
             formSubmit={formSubmit}>
             <RatTextField

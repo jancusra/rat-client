@@ -41,7 +41,7 @@ module.exports = {
       ratStyles: path.join(paths.src, 'css'),
       ratWeb: path.join(paths.src, 'web'),
     },
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".svg"]
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".svg", ".png"]
   },
   optimization: {
     runtimeChunk: 'single',

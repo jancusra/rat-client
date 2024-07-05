@@ -60,6 +60,13 @@ function RatForm(props) {
                             {locales.Cancel}
                     </Button>
                     : null}
+                {props.showBackButton ?
+                    <Button
+                        variant="outlined"
+                        onClick={() => handleCancel()}>
+                            {locales.Back}
+                    </Button>
+                    : null}
             </div>
             {commonMessage ? 
                 <Alert 

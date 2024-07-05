@@ -36,16 +36,21 @@ function RatWebHeader() {
             {user.data.email ?
                 <>
                     <div className="logged-user" onClick={() => {location.href = "/"}}>
-                        {user.data.email}
+                        Logged as <span className="logged-user-email">{user.data.email}</span>
                     </div>
                     <div className="logout-user" onClick={logout}>
                         {locales.Logout}
                     </div>
                 </>
             : null}
-            {user.data.isAdmin ?
+            {user.data.isAdmin && !IsAdminLayout() ?
                 <div className="admin-link" onClick={() => {location.href = "/admin"}}>
                     {locales.Administration}
+                </div>
+            : null}
+            {IsAdminLayout() ?
+                <div className="admin-link" onClick={() => {location.href = "/"}}>
+                    {locales.PublicWeb}
                 </div>
             : null}
             {Array.isArray(user.data.languages) && user.data.languages.length > 1 ?

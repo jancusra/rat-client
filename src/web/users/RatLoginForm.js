@@ -28,6 +28,7 @@ function RatLoginForm() {
             class="rat-login-box"
             apiSource="/auth/authenticate"
             buttonContent={locales.Login}
+            showBackButton={true}
             formData={formData}
             formSubmit={formSubmit}>
             <RatTextField
