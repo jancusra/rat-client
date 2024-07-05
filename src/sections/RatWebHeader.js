@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import axios from 'axios';
 import RatUser from 'ratContexts/RatUser';
 import RatLocales from 'ratContexts/RatLocales';
 import RatIcon from 'ratComponents/RatIcon';
@@ -19,13 +18,6 @@ function RatWebHeader() {
         window.location.reload();
     }
 
-    function logout() {
-        axios.post("/auth/logout")
-            .then(function () {
-                location.href = "/";
-            });
-    }
-
     return (
         <div className="rat-web-header">
             {IsAdminLayout() ?
@@ -34,14 +26,9 @@ function RatWebHeader() {
                 </div>
                 : null}
             {user.data.email ?
-                <>
-                    <div className="logged-user" onClick={() => {location.href = "/"}}>
-                        Logged as <span className="logged-user-email">{user.data.email}</span>
-                    </div>
-                    <div className="logout-user" onClick={logout}>
-                        {locales.Logout}
-                    </div>
-                </>
+                <div className="logged-user" onClick={() => {location.href = "/"}}>
+                    Logged as <span className="logged-user-email">{user.data.email}</span>
+                </div>
             : null}
             {user.data.isAdmin && !IsAdminLayout() ?
                 <div className="admin-link" onClick={() => {location.href = "/admin"}}>

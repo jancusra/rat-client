@@ -106,8 +106,7 @@
   color: #ffcc00;
 }
 
-.logged-user,
-.logout-user {
+.logged-user {
   float: left;
 }
 
