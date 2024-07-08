@@ -1,4 +1,4 @@
-# Rat react client application
+# Rat React client application
 ### [ NOT MAINTAINED CODE (ONLY FOR DEMONSTRATION) ]
 
 [Here is server API for this application](https://github.com/jancusra/rat-server)
