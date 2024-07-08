@@ -1,11 +1,13 @@
 # Rat react client application
+### [ NOT MAINTAINED CODE (ONLY FOR DEMONSTRATION) ]
 
 [Here is server API for this application](https://github.com/jancusra/rat-server)
 
-* Web and administration layout
+* Public web and administration layout
 * Multi-language support
+* Common forms and controls with a validation
 * Users and roles management
-* Common forms and controls
+* Table of logged events
 * Super fast administration view definition
 * Optimized distribution with report page
-* Without Redux - it's overkill here
+* Without the React Redux - it's overkill here
