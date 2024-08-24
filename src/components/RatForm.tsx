@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
-import RatLocales from 'ratContexts/RatLocales';
-import { GetCurrentLanguageId } from 'ratRoot/Utils';
+import RatLocales from '../contexts/RatLocales';
+import { GetCurrentLanguageId } from '../Utils';
 
 function RatForm(props) {
     const [commonMessage, setMessage] = useState("");

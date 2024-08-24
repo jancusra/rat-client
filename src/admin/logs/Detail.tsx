@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import RatCommonDetail from 'ratComponents/RatCommonDetail';
+import RatCommonDetail from '../../components/RatCommonDetail';
 
 function Detail() {
     const params = useParams();

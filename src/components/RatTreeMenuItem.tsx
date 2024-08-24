@@ -5,8 +5,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
-import RatIcon from 'ratComponents/RatIcon';
-import RatLocales from 'ratContexts/RatLocales';
+import RatIcon from '../components/RatIcon';
+import RatLocales from '../contexts/RatLocales';
 import 'ratStyles/admin';
 
 function RatTreeMenuItem(props) {

@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
-import RatCommonForm from 'ratComponents/RatCommonForm';
+import RatCommonForm from '../../components/RatCommonForm';
 
 function CreateEdit() {
     const params = useParams();
 
     return (
         <RatCommonForm 
-            entityName="UserRole" 
+            entityName="User" 
             entityId={params.id}
         />
     );

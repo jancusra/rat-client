@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import List from '@mui/material/List';
-import RatTreeMenuItem from 'ratComponents/RatTreeMenuItem';
+import RatTreeMenuItem from '../components/RatTreeMenuItem';
 
 function RatTreeMenu(props) {
     const [menuData, setMenuData] = useState([]);

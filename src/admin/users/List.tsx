@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
-import RatGrid from 'ratComponents/RatGrid';
-import RatLocales from 'ratContexts/RatLocales';
+import RatGrid from '../../components/RatGrid';
+import RatLocales from '../../contexts/RatLocales';
 
-function Roles() {
+function Users() {
     const navigate = useNavigate();
     const locales = useContext(RatLocales);
 
@@ -15,9 +15,9 @@ function Roles() {
                 onClick={() => {
                     navigate("./0");
                   }}>{locales.CreateNew}</Button>
-            <RatGrid entityName="UserRole" />
+            <RatGrid entityName="User" />
         </>
     );
 }
 
-export default Roles;
+export default Users;

@@ -2,15 +2,16 @@ import { useEffect, useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
+import { SelectOption } from '../models';
 
 function RatMultiSelect(props) {
-    const [selectedOptionValues, setSelectedOptionValues] = useState([]);
-    const [allOptionValues, setAllOptionValues] = useState([]);
+    const [selectedOptionValues, setSelectedOptionValues] = useState<SelectOption[]>([]);
+    const [allOptionValues, setAllOptionValues] = useState<SelectOption[]>([]);
 
     function onChange(e, value) {
         setSelectedOptionValues(value);
 
-        var ids = value.map(function(x) {
+        let ids = value.map(function(x) {
             return x.id;
         });
 
@@ -21,11 +22,12 @@ function RatMultiSelect(props) {
     }
 
     useEffect(() => {
-        var allOptions = [], selectedOptions = [];
+        let allOptions: Array<SelectOption> = [];
+        let selectedOptions: Array<SelectOption> = [];
 
-        for (var key in props.selectData) {
-            var id = props.stringValues ? props.selectData[key] : parseInt(key);
-            var option = { id: id, name: props.selectData[key] };
+        for (let key in props.selectData) {
+            let id = props.stringValues ? props.selectData[key] : parseInt(key);
+            let option: SelectOption = { id: id, name: props.selectData[key] };
             allOptions.push(option);
 
             if (props.value.includes(id)) {

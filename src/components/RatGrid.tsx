@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import OpenInBrowserIcon from '@mui/icons-material/OpenInBrowser';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import RatIcon from '../components/RatIcon';
+import RatIcon from './RatIcon';
 import RatMultiSelect from '../components/RatMultiSelect';
 import RatLocales from '../contexts/RatLocales';
 import { IconsByString } from '../fonts/IconsByString';

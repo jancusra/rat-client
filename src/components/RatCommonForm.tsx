@@ -1,15 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import RatForm from 'ratComponents/RatForm';
-import RatCheckbox from 'ratComponents/RatCheckbox';
-import RatMultiSelect from 'ratComponents/RatMultiSelect';
-import RatSelect from 'ratComponents/RatSelect';
-import RatTextField from 'ratComponents/RatTextField';
-import RatLocales from 'ratContexts/RatLocales';
+import RatForm from '../components/RatForm';
+import RatCheckbox from '../components/RatCheckbox';
+import RatMultiSelect from '../components/RatMultiSelect';
+import RatSelect from '../components/RatSelect';
+import RatTextField from '../components/RatTextField';
+import RatLocales from '../contexts/RatLocales';
+import { FormEntry } from '../models';
 
 function RatCommonForm(props) {
-    const [formData, setFormData] = useState([]);
+    const [formData, setFormData] = useState<FormEntry[]>([]);
     const [validationData, setValidationData] = useState({});
     const locales = useContext(RatLocales);
     const navigate = useNavigate();

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-const AdminLayout = React.lazy(() => import('ratAdmin/index'));
-const Dashboard = React.lazy(() => import('ratAdmin/Dashboard'));
-const Users = React.lazy(() => import('ratAdmin/users/List'));
-const UsersCE = React.lazy(() => import('ratAdmin/users/CreateEdit'));
-const Roles = React.lazy(() => import('ratAdmin/roles/List'));
-const RolesCE = React.lazy(() => import('ratAdmin/roles/CreateEdit'));
-const Logs = React.lazy(() => import('ratAdmin/logs/List'));
-const LogsDetail = React.lazy(() => import('ratAdmin/logs/Detail'));
-const NotFound = React.lazy(() => import('ratWeb/NotFound'));
+const AdminLayout = React.lazy(() => import('./index'));
+const Dashboard = React.lazy(() => import('./Dashboard'));
+const Users = React.lazy(() => import('./users/List'));
+const UsersCE = React.lazy(() => import('./users/CreateEdit'));
+const Roles = React.lazy(() => import('./roles/List'));
+const RolesCE = React.lazy(() => import('./roles/CreateEdit'));
+const Logs = React.lazy(() => import('./logs/List'));
+const LogsDetail = React.lazy(() => import('./logs/Detail'));
+const NotFound = React.lazy(() => import('../web/NotFound'));
 
 function RatAdminRoutes() {
     return (

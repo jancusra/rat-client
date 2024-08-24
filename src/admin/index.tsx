@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import RatTreeMenu from 'ratComponents/RatTreeMenu';
+import RatTreeMenu from '../components/RatTreeMenu';
 import 'ratStyles/admin';
 
 function RatAdminLayout() {
