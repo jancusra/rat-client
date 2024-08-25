@@ -5,15 +5,19 @@ export type Language = {
     itemOrder: number;
     languageCulture: string;
     twoLetterCode: string;
-};
+}
 
 export type UserData = {
     email?: string;
     isAdmin?: boolean;
     languages?: Array<Language>
-};
+}
 
 export type UserContext = {
     data: UserData;
     getUserData: () => void;
-};
+}
+
+export type LocaleContext = {
+    [key: string]: string
+}

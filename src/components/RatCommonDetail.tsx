@@ -8,10 +8,13 @@ function RatCommonDetail(props: CommonDetailProps) {
     const locales = useContext(RatLocales);
 
     function getDetailData() {
-        axios.post("/entity/getentity/", { id: props.entityId, entityName: props.entityName })
-            .then(function (response) {
-                setDetailData(response.data);
-        });
+        if (props.entityId)
+        {
+            axios.post("/entity/getentity/", { id: parseInt(props.entityId), entityName: props.entityName })
+                .then(function (response) {
+                    setDetailData(response.data);
+            });
+        }
     }
 
     useEffect(() => {
@@ -42,6 +45,6 @@ function RatCommonDetail(props: CommonDetailProps) {
 export default RatCommonDetail;
 
 type CommonDetailProps = {
-    entityId: number;
+    entityId?: string;
     entityName: string;
 }

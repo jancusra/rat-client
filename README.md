@@ -3,6 +3,7 @@
 
 [Here is server API for this application](https://github.com/jancusra/rat-server)
 
+* Strongly typed by Typescript
 * Public web and administration layout
 * Multi-language support
 * Common forms and controls with a validation

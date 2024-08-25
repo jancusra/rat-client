@@ -26,6 +26,6 @@ function RatAdminRoutes() {
         </Route>
       </Routes>
     );
-  }
+}
 
-  export default RatAdminRoutes;
+export default RatAdminRoutes;

@@ -16,14 +16,17 @@ function RatCommonForm(props: CommonFormProps) {
     const navigate = useNavigate();
 
     function getFormData() {
-        axios.post("/entity/getentity/", { id: props.entityId, entityName: props.entityName })
-          .then(function (response) {
-            setFormData(response.data);
+        if (props.entityId)
+        {
+            axios.post("/entity/getentity/", { id: parseInt(props.entityId), entityName: props.entityName })
+            .then(function (response) {
+                setFormData(response.data);
 
-            response.data.forEach(function (entry: FormEntry) {
-                validationData[entry.name] = { error: false, message: '' };
+                response.data.forEach(function (entry: FormEntry) {
+                    validationData[entry.name] = { error: false, message: '' };
+                });
             });
-        });
+        }
     }
 
     function updateField(data: FormControlState) {
@@ -110,9 +113,9 @@ function RatCommonForm(props: CommonFormProps) {
 export default RatCommonForm;
 
 type CommonFormProps = {
-    entityId: number;
+    entityId?: string;
     entityName: string;
-    submitUrl: string;
+    submitUrl?: string;
 }
 
 type ValidationEntry = {
