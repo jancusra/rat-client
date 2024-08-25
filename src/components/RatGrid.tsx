@@ -10,24 +10,25 @@ import RatIcon from './RatIcon';
 import RatMultiSelect from '../components/RatMultiSelect';
 import RatLocales from '../contexts/RatLocales';
 import { IconsByString } from '../fonts/IconsByString';
+import { SelectOptions } from './types';
 
-function RatGrid(props) {
+function RatGrid(props: GridProps) {
   const navigate = useNavigate();
-  const [columns, setColumns] = useState<GridColDef[]>([]);
+  const [columns, setColumns] = useState<Array<GridColDef>>([]);
   const [gridData, setGridData] = useState([]);
   const locales = useContext(RatLocales);
   const hiddenColumns = {}, optionsData = {};
 
-  function lowerFirstLetter(str) {
+  function lowerFirstLetter(str: string) {
     return str.charAt(0).toLowerCase() + str.slice(1);
   }
 
-  function entityRedirect(id) {
-    var url = location.pathname.replace(/\/$/, "");
+  function entityRedirect(id: number) {
+    let url = location.pathname.replace(/\/$/, "");
     navigate(url + "/" + id);
   }
 
-  function deleteEntry(id) {
+  function deleteEntry(id: number) {
     axios.post("/entity/deleteentity", { entityName: props.entityName, id: id })
       .then(function () {
         getGridData();
@@ -37,10 +38,10 @@ function RatGrid(props) {
   function getGridData() {
     axios.post("/entity/getalltotable", { entityName: props.entityName })
       .then(function (response) {
-        const columnsData: GridColDef[] = [];
+        let columnsData: Array<GridColDef> = [];
         
-        response.data.columns.forEach(function (column) {
-          var columnObject = {
+        response.data.columns.forEach(function (column: GridColumn) {
+          let columnObject = {
             field: lowerFirstLetter(column.name),
             headerName: column.entryType != "EnumIcon" ? locales[column.name] : ""
           };
@@ -88,9 +89,10 @@ function RatGrid(props) {
             case "MappedMultiSelect": {
               columnObject["renderCell"] = ({row}) => (
                 <RatMultiSelect
+                  name={columnObject.field}
                   readOnly
                   stringValues
-                  value={row.userRole}
+                  value={row[columnObject.field]}
                   selectData={column.selectOptions} />
               );
               columnObject["width"] = 600;
@@ -113,7 +115,7 @@ function RatGrid(props) {
                 <Button variant="contained"
                   color="secondary"
                   startIcon={<EditIcon />}
-                  disabled={row.hasOwnProperty('isSystemEntry') ? row.isSystemEntry : false}
+                  disabled={row.hasOwnProperty("isSystemEntry") ? row.isSystemEntry : false}
                   onClick={() => entityRedirect(row.id)}>
                   {locales.Edit}
                 </Button>
@@ -126,7 +128,7 @@ function RatGrid(props) {
                 <Button variant="contained"
                   color="error"
                   startIcon={<DeleteIcon />}
-                  disabled={row.hasOwnProperty('isSystemEntry') ? row.isSystemEntry : false}
+                  disabled={row.hasOwnProperty("isSystemEntry") ? row.isSystemEntry : false}
                   onClick={() => deleteEntry(row.id)}>
                   {locales.Delete}
                 </Button>
@@ -186,3 +188,18 @@ function RatGrid(props) {
 }
 
 export default RatGrid;
+
+type GridProps = {
+  entityName: string;
+}
+
+type GridColumn = {
+  entryType: string;
+  excluded: boolean;
+  hidden: boolean;
+  name: string;
+  order: number;
+  selectOptions: SelectOptions;
+  flex: number;
+  width: number;
+}

@@ -1,7 +1,8 @@
 import TextField from '@mui/material/TextField';
+import { FormControlState } from './types';
 
-function RatTextField(props) {
-    function onChange(e) {
+function RatTextField(props: TextFieldProps) {
+    function onChange(e: React.ChangeEvent<HTMLInputElement>) {
         props.callback({
             name: e.target.name, 
             value: e.target.value 
@@ -23,3 +24,12 @@ function RatTextField(props) {
 }
 
 export default RatTextField;
+
+type TextFieldProps = {
+    name: string;
+    label: string;
+    value: string;
+    error: boolean;
+    errorMessage: string;
+    callback: (state: FormControlState) => void;
+}

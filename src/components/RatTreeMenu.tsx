@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import List from '@mui/material/List';
 import RatTreeMenuItem from '../components/RatTreeMenuItem';
+import { TreeMenuItem } from './types';
 
-function RatTreeMenu(props) {
-    const [menuData, setMenuData] = useState([]);
+function RatTreeMenu(props: TreeMenuProps) {
+    const [menuData, setMenuData] = useState<Array<TreeMenuItem>>([]);
 
     function getMenuData() {
         axios.post(props.apiSource)
@@ -32,3 +33,7 @@ function RatTreeMenu(props) {
 }
 
 export default RatTreeMenu;
+
+type TreeMenuProps = {
+    apiSource: string;
+}

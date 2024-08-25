@@ -1,19 +1,20 @@
-import { useContext, useState } from 'react';
+import { ReactNode, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import RatLocales from '../contexts/RatLocales';
 import { GetCurrentLanguageId } from '../Utils';
+import { FormEntry, ValidationResult } from './types';
 
-function RatForm(props) {
-    const [commonMessage, setMessage] = useState("");
+function RatForm(props: RatFormProps) {
+    const [commonMessage, setMessage] = useState<string>("");
     const locales = useContext(RatLocales);
     const navigate = useNavigate();
 
-    function handleSubmit(e) {
+    function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
-        var reducedFormData = {};
+        let reducedFormData = {};
 
         if (props.entityName)
         {
@@ -22,7 +23,7 @@ function RatForm(props) {
             });
         }
 
-        var data = props.entityName 
+        let data = props.entityName 
             ? { entityName: props.entityName, data: reducedFormData, languageId: GetCurrentLanguageId() } 
             : props.formData;
 
@@ -80,3 +81,16 @@ function RatForm(props) {
 }
 
 export default RatForm;
+
+type RatFormProps = {
+    entityName: string;
+    apiSource: string;
+    class: string;
+    formData: Array<FormEntry>;
+    buttonContent: string;
+    showCancelButton: boolean;
+    showBackButton: boolean;
+    children: ReactNode;
+    formSubmit: () => void;
+    formErrors: (errors: Array<ValidationResult>) => void;
+}

@@ -7,7 +7,7 @@ import RatUser from './contexts/RatUser';
 import RatLocales from './contexts/RatLocales';
 import RatWebHeader from './sections/RatWebHeader';
 import { IsAdminLayout, GetCurrentLanguageId } from './Utils';
-import { UserData, UserContext } from './models';
+import { UserData, UserContext } from './types';
 
 axios.defaults.baseURL = "http://localhost:47050/api";
 

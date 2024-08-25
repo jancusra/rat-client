@@ -2,23 +2,26 @@ import { useEffect, useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
-import { SelectOption } from '../models';
+import { FormControlState, SelectOptions } from './types';
 
-function RatMultiSelect(props) {
-    const [selectedOptionValues, setSelectedOptionValues] = useState<SelectOption[]>([]);
-    const [allOptionValues, setAllOptionValues] = useState<SelectOption[]>([]);
+function RatMultiSelect(props: MultiSelectProps) {
+    const [selectedOptionValues, setSelectedOptionValues] = useState<Array<SelectOption>>([]);
+    const [allOptionValues, setAllOptionValues] = useState<Array<SelectOption>>([]);
 
-    function onChange(e, value) {
+    function onChange(e: React.ChangeEvent<HTMLInputElement>, value: any) {
         setSelectedOptionValues(value);
 
-        let ids = value.map(function(x) {
+        let ids = value.map(function(x: SelectOption) {
             return x.id;
         });
 
-        props.callback({
-            name: props.name, 
-            value: ids
-        });
+        if (props.callback != undefined)
+        {
+            props.callback({
+                name: props.name,
+                value: ids as Array<number>
+            });
+        }
     }
 
     useEffect(() => {
@@ -30,7 +33,7 @@ function RatMultiSelect(props) {
             let option: SelectOption = { id: id, name: props.selectData[key] };
             allOptions.push(option);
 
-            if (props.value.includes(id)) {
+            if (props.value.includes(id as never)) {
                 selectedOptions.push(option);
             }
         }
@@ -63,3 +66,18 @@ function RatMultiSelect(props) {
 }
 
 export default RatMultiSelect;
+
+type MultiSelectProps = {
+    name: string;
+    label?: string;
+    stringValues?: boolean;
+    readOnly?: boolean;
+    value: Array<number> | Array<string>;
+    selectData: SelectOptions;
+    callback?: (state: FormControlState) => void;
+}
+
+type SelectOption = {
+    id: number | string;
+    name: string;
+}

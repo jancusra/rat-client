@@ -1,10 +1,11 @@
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { FormControlState } from './types';
 
-function RatCheckbox(props) {
-    function onChange(e) {
+function RatCheckbox(props: CheckboxProps) {
+    function onChange(e: React.ChangeEvent<HTMLInputElement>) {
         props.callback({
-            name: e.target.name, 
+            name: e.target.name,
             value: e.target.checked 
         });
     }
@@ -21,3 +22,10 @@ function RatCheckbox(props) {
 }
 
 export default RatCheckbox;
+
+type CheckboxProps = {
+    name: string;
+    label: string;
+    value: boolean;
+    callback: (state: FormControlState) => void;
+}

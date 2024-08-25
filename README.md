@@ -10,4 +10,3 @@
 * Table of logged events
 * Super fast administration view definition
 * Optimized distribution with report page
-* Without the React Redux - it's overkill here

@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import RatLocales from 'ratContexts/RatLocales';
+import RatLocales from '../contexts/RatLocales';
+import { FormEntry } from './types';
 
-function RatCommonDetail(props) {
-    const [detailData, setDetailData] = useState([]);
+function RatCommonDetail(props: CommonDetailProps) {
+    const [detailData, setDetailData] = useState<Array<FormEntry>>([]);
     const locales = useContext(RatLocales);
 
     function getDetailData() {
@@ -26,6 +27,7 @@ function RatCommonDetail(props) {
                             <tr key={detailEntry.name}>
                                 <td className="detail-name">{locales[detailEntry.name]}:</td>
                                 {detailEntry.selectOptions != null && Object.keys(detailEntry.selectOptions).length > 0 
+                                    && typeof detailEntry.value == "number"
                                     ? <td>{detailEntry.selectOptions[detailEntry.value]}</td>
                                     : <td>{detailEntry.value}</td>}
                             </tr>
@@ -38,3 +40,8 @@ function RatCommonDetail(props) {
 }
 
 export default RatCommonDetail;
+
+type CommonDetailProps = {
+    entityId: number;
+    entityName: string;
+}

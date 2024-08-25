@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserContext } from '../models';
+import { UserContext } from '../types';
 
 const defaultValue: UserContext = { 
     data: {}, 

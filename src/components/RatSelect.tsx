@@ -3,11 +3,12 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { FormControlState, SelectOptions } from './types';
 
-function RatSelect(props) {
-    const [selectValue, setSelectValue] = useState('');
+function RatSelect(props: SelectProps) {
+    const [selectValue, setSelectValue] = useState<string>("");
 
-    function onChange(e) {
+    function onChange(e: React.ChangeEvent<HTMLInputElement>) {
         setSelectValue(e.target.value);
 
         props.callback({
@@ -38,3 +39,11 @@ function RatSelect(props) {
 }
 
 export default RatSelect;
+
+type SelectProps = {
+    name: string;
+    label: string;
+    value: string;
+    selectData: SelectOptions;
+    callback: (state: FormControlState) => void;
+}

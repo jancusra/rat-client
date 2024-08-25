@@ -7,14 +7,15 @@ import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
 import RatIcon from '../components/RatIcon';
 import RatLocales from '../contexts/RatLocales';
+import { TreeMenuItem } from './types';
 import 'ratStyles/admin';
 
-function RatTreeMenuItem(props) {
+function RatTreeMenuItem(props: TreeMenuItemProps) {
     const [open, setOpen] = useState(true);
     const locales = useContext(RatLocales);
     const navigate = useNavigate();
 
-    function handleClick (url) {
+    function handleClick (url: string) {
         if (url) {
             navigate(url);
         } else {
@@ -55,3 +56,7 @@ function RatTreeMenuItem(props) {
 }
 
 export default RatTreeMenuItem;
+
+type TreeMenuItemProps = {
+    menuData: TreeMenuItem
+}

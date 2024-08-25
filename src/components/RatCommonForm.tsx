@@ -7,11 +7,11 @@ import RatMultiSelect from '../components/RatMultiSelect';
 import RatSelect from '../components/RatSelect';
 import RatTextField from '../components/RatTextField';
 import RatLocales from '../contexts/RatLocales';
-import { FormEntry } from '../models';
+import { FormControlState, FormEntry, ValidationResult } from './types';
 
-function RatCommonForm(props) {
-    const [formData, setFormData] = useState<FormEntry[]>([]);
-    const [validationData, setValidationData] = useState({});
+function RatCommonForm(props: CommonFormProps) {
+    const [formData, setFormData] = useState<Array<FormEntry>>([]);
+    const [validationData, setValidationData] = useState<ValidationData>({});
     const locales = useContext(RatLocales);
     const navigate = useNavigate();
 
@@ -20,13 +20,13 @@ function RatCommonForm(props) {
           .then(function (response) {
             setFormData(response.data);
 
-            response.data.forEach(function (entry) {
+            response.data.forEach(function (entry: FormEntry) {
                 validationData[entry.name] = { error: false, message: '' };
             });
         });
     }
 
-    function updateField(data) {
+    function updateField(data: FormControlState) {
         const newState = formData.map(obj => {
             if (data.name == obj.name) {
                 return { ...obj, value: data.value };
@@ -37,7 +37,7 @@ function RatCommonForm(props) {
         setFormData(newState);
     }
 
-    function formErrors(errors) {
+    function formErrors(errors: Array<ValidationResult>) {
         errors.forEach(function (error) {
             setValidationData({
                 ...validationData,
@@ -65,6 +65,7 @@ function RatCommonForm(props) {
             entityName={props.entityName}
             buttonContent={locales.Save}
             showCancelButton={true}
+            showBackButton={false}
             formData={formData}
             formErrors={formErrors}
             formSubmit={formSubmit}>
@@ -75,13 +76,13 @@ function RatCommonForm(props) {
                             key={formEntry.name}
                             name={formEntry.name}
                             label={locales[formEntry.name]}
-                            value={formEntry.value}
+                            value={formEntry.value as boolean}
                             callback={updateField} />,
                         'String': <RatTextField
                             key={formEntry.name}
                             name={formEntry.name}
                             label={locales[formEntry.name]}
-                            value={formEntry.value == null ? '' : formEntry.value}
+                            value={formEntry.value == null ? '' : formEntry.value as string}
                             error={validationData[formEntry.name].error}
                             errorMessage={validationData[formEntry.name].message}
                             callback={updateField} />,
@@ -89,14 +90,14 @@ function RatCommonForm(props) {
                             key={formEntry.name}
                             name={formEntry.name}
                             label={locales[formEntry.name]}
-                            value={formEntry.value}
+                            value={formEntry.value as string}
                             selectData={formEntry.selectOptions}
                             callback={updateField} />,
                         'MappedMultiSelect': <RatMultiSelect
                             key={formEntry.name}
                             name={formEntry.name}
                             label={locales[formEntry.name]}
-                            value={formEntry.value}
+                            value={formEntry.value as Array<number>}
                             selectData={formEntry.selectOptions}
                             callback={updateField} />
                     } [formEntry.entryType]
@@ -107,3 +108,18 @@ function RatCommonForm(props) {
 }
 
 export default RatCommonForm;
+
+type CommonFormProps = {
+    entityId: number;
+    entityName: string;
+    submitUrl: string;
+}
+
+type ValidationEntry = {
+    error: boolean;
+    message: string;
+}
+
+type ValidationData = {
+    [key: string]: ValidationEntry;
+}
