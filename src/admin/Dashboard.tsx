@@ -6,7 +6,7 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import RatLocales from '../contexts/RatLocales';
-import 'ratStyles/admin';
+import '../css/admin';
 
 function Dashboard() {
     const [open, setOpen] = React.useState(false);

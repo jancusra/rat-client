@@ -8,7 +8,7 @@ import Collapse from '@mui/material/Collapse';
 import RatIcon from '../components/RatIcon';
 import RatLocales from '../contexts/RatLocales';
 import { TreeMenuItem } from './types';
-import 'ratStyles/admin';
+import '../css/admin';
 
 function RatTreeMenuItem(props: TreeMenuItemProps) {
     const [open, setOpen] = useState(true);

@@ -10,7 +10,7 @@ const paths = {
 module.exports = {
   entry: path.join(paths.src, 'index.tsx'),
   performance: {
-    maxAssetSize: 512000
+    maxAssetSize: 1000000
   },
   module: {
     rules: [
@@ -30,17 +30,6 @@ module.exports = {
     ],
   },
   resolve: {
-    alias: {
-      ratRoot: path.join(paths.src, ''),
-      ratAdmin: path.join(paths.src, 'admin'),
-      ratComponents: path.join(paths.src, 'components'),
-      ratContexts: path.join(paths.src, 'contexts'),
-      ratImages: path.join(paths.src, 'images'),
-      ratPlugins: path.join(paths.src, 'plugins'),
-      ratSections: path.join(paths.src, 'sections'),
-      ratStyles: path.join(paths.src, 'css'),
-      ratWeb: path.join(paths.src, 'web'),
-    },
     extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".svg", ".png"]
   },
   optimization: {

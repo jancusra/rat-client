@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import RatTreeMenu from '../components/RatTreeMenu';
-import 'ratStyles/admin';
+import '../css/admin';
 
 function RatAdminLayout() {
     const hiddenAdminMenu = localStorage.getItem("hiddenAdminMenu") == "true";

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
 import OpenInBrowserIcon from '@mui/icons-material/OpenInBrowser';
 import EditIcon from '@mui/icons-material/Edit';
@@ -13,10 +13,11 @@ import { IconsByString } from '../fonts/IconsByString';
 import { SelectOptions } from './types';
 
 function RatGrid(props: GridProps) {
-  const navigate = useNavigate();
+  const [paginationModel, setPaginationModel] = useState({ pageSize: 15, page: 0 });
   const [columns, setColumns] = useState<Array<GridColDef>>([]);
   const [gridData, setGridData] = useState([]);
   const locales = useContext(RatLocales);
+  const navigate = useNavigate();
   const hiddenColumns = {}, optionsData = {};
 
   function lowerFirstLetter(str: string) {
@@ -67,13 +68,18 @@ function RatGrid(props: GridProps) {
               break;
             }
             case "DateTime": {
-              columnObject["valueGetter"] = getFormattedDate;
+              columnObject["valueGetter"] = (value: string) => {
+                const date = new Date(value);
+                return date.toLocaleString('en-us');
+              };
               columnObject["flex"] = 1;
               break;
             }
             case "Enum": { 
               optionsData[columnObject.field] = column.selectOptions;
-              columnObject["valueGetter"] = getEnumName;
+              columnObject["valueGetter"] = (value: string) => {
+                return optionsData[columnObject.field][value];
+              };
               columnObject["flex"] = 1;
               break; 
             }
@@ -157,27 +163,18 @@ function RatGrid(props: GridProps) {
     });
   }
 
-  function getFormattedDate(params: GridValueGetterParams) {
-    const date = new Date(params.value);
-    return date.toLocaleString('en-us');
-  }
-
-  function getEnumName(params: GridValueGetterParams) {
-    return optionsData[params.field][params.value];
-  }
-
   useEffect(() => {
       getGridData();
   }, [])
 
   return (
       <DataGrid
-          sx={{ width: '100%', height: 500, margin: '10px 0 0' }}
-          getRowHeight={() => 'auto'}
+          sx={{ width: '100%', height: 750, margin: '10px 0 0' }}
           rows={gridData}
           columns={columns}
-          pageSize={15}
-          rowsPerPageOptions={[15]}
+          paginationModel={paginationModel}
+          onPaginationModelChange={setPaginationModel}
+          pageSizeOptions={[15, 25, 50]}
           initialState= {{
             columns: {
               columnVisibilityModel: hiddenColumns
