@@ -8,7 +8,7 @@ const paths = {
 };
 
 module.exports = {
-  entry: path.join(paths.src, 'index.js'),
+  entry: path.join(paths.src, 'index.tsx'),
   performance: {
     maxAssetSize: 512000
   },

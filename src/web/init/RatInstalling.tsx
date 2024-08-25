@@ -1,4 +1,4 @@
-import logo from 'ratImages/react-logo';
+import logo from '../../images/react-logo.svg';
 
 function RatInstalling() {
   return (

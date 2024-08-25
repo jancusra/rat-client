@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@mui/material/Button';
-import RatUser from 'ratContexts/RatUser';
+import RatUser from '../contexts/RatUser';
 import RatLocales from '../contexts/RatLocales';
-import ratImage from 'ratImages/rat';
+import ratImage from '../images/rat.png';
 
 function RatHome() {
     const navigate = useNavigate();

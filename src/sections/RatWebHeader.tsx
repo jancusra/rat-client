@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import RatUser from 'ratContexts/RatUser';
-import RatLocales from 'ratContexts/RatLocales';
-import RatIcon from 'ratComponents/RatIcon';
-import { IsAdminLayout, ChangeStorageItemBoolState } from 'ratRoot/Utils';
+import RatUser from '../contexts/RatUser';
+import RatLocales from '../contexts/RatLocales';
+import RatIcon from '../components/RatIcon';
+import { IsAdminLayout, ChangeStorageItemBoolState } from '../Utils';
 
 function RatWebHeader() {
     const user = useContext(RatUser);

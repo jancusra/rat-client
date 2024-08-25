@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import RatForm from 'ratComponents/RatForm';
-import RatTextField from 'ratComponents/RatTextField';
-import RatUser from 'ratContexts/RatUser';
-import RatLocales from 'ratContexts/RatLocales';
+import RatForm from '../../components/RatForm';
+import RatTextField from '../../components/RatTextField';
+import RatUser from '../../contexts/RatUser';
+import RatLocales from '../../contexts/RatLocales';
 
 function RatLoginForm() {
     const [formData, setState] = useState({});

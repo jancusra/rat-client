@@ -1,12 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import RatPluginRoutes from 'ratPlugins/RatPluginRoutes';
+import RatPluginRoutes from '../plugins/RatPluginRoutes';
 
-const Home = React.lazy(() => import('ratWeb/RatHome'));
-const Installing = React.lazy(() => import('ratWeb/init/RatInstalling'));
-const Login = React.lazy(() => import('ratWeb/users/RatLoginForm'));
-const Register = React.lazy(() => import('ratWeb/users/RatRegisterForm'));
-const NotFound = React.lazy(() => import('ratWeb/NotFound'));
+const Home = React.lazy(() => import('./RatHome'));
+const Installing = React.lazy(() => import('./init/RatInstalling'));
+const Login = React.lazy(() => import('./users/RatLoginForm'));
+const Register = React.lazy(() => import('./users/RatRegisterForm'));
+const NotFound = React.lazy(() => import('./NotFound'));
 
 function RatWebRoutes() {
     return (
@@ -19,6 +19,6 @@ function RatWebRoutes() {
             <Route path="*" element={<NotFound />} />
         </Routes>
     );
-  }
+}
 
-  export default RatWebRoutes;
+export default RatWebRoutes;

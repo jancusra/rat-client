@@ -3,15 +3,16 @@ import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import RatAdminRoutes from './admin/RatAdminRoutes';
 import RatWebRoutes from './web/RatWebRoutes';
-import RatUser from 'ratContexts/RatUser';
-import RatLocales from 'ratContexts/RatLocales';
-import RatWebHeader from 'ratSections/RatWebHeader';
-import { IsAdminLayout, GetCurrentLanguageId } from 'ratRoot/Utils';
+import RatUser from './contexts/RatUser';
+import RatLocales from './contexts/RatLocales';
+import RatWebHeader from './sections/RatWebHeader';
+import { IsAdminLayout, GetCurrentLanguageId } from './Utils';
+import { UserData, UserContext } from './models';
 
 axios.defaults.baseURL = "http://localhost:47050/api";
 
 function RatApp() {
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState<UserData>({});
     const [locales, setLocales] = useState({});
 
     function getUserData() {
@@ -28,7 +29,7 @@ function RatApp() {
             });
     }
 
-    const userContext = {
+    const userContext: UserContext = {
         data: userData,
         getUserData
     }
@@ -50,6 +51,6 @@ function RatApp() {
             </RatLocales.Provider>
         </RatUser.Provider>
     );
-  }
+}
 
-  export default RatApp;
+export default RatApp;
