@@ -7,13 +7,13 @@ import RatUser from './contexts/RatUser';
 import RatLocales from './contexts/RatLocales';
 import RatWebHeader from './sections/RatWebHeader';
 import { IsAdminLayout, GetCurrentLanguageId } from './Utils';
-import { UserData, UserContext } from './types';
+import { LocaleContext, UserData, UserContext } from './types';
 
 axios.defaults.baseURL = "http://localhost:47050/api";
 
 function RatApp() {
     const [userData, setUserData] = useState<UserData>({});
-    const [locales, setLocales] = useState({});
+    const [locales, setLocales] = useState<LocaleContext>({});
 
     function getUserData() {
         axios.get("/user/getCurrentUserData")

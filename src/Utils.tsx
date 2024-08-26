@@ -1,6 +1,6 @@
 export const IsAdminLayout = () => {
     return window.location.pathname.startsWith("/admin");
-};
+}
 
 export const GetCurrentLanguageId = () => {
     let langId = localStorage.getItem("languageId");
@@ -10,7 +10,7 @@ export const GetCurrentLanguageId = () => {
     }
 
     return parseInt(langId);
- };
+}
 
  export const ChangeStorageItemBoolState = (storageItemKey: string) => {
     if (localStorage.getItem(storageItemKey) == "true") {
@@ -18,4 +18,4 @@ export const GetCurrentLanguageId = () => {
     } else {
         localStorage.setItem(storageItemKey, "true");
     }
-};
+}

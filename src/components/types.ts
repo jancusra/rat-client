@@ -7,6 +7,10 @@ export type FormControlState = {
     value: number | string | boolean | Array<number> | Array<string>;
 }
 
+export type FormData = {
+    [key: string]: number | string | boolean | Array<number> | Array<string>
+}
+
 export type FormEntry = {
     entryType: string;
     excluded: boolean;

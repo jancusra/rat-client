@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import RatLocales from '../contexts/RatLocales';
 import { GetCurrentLanguageId } from '../Utils';
-import { FormEntry, ValidationResult } from './types';
+import { FormData, FormEntry, ValidationResult } from './types';
 
 function RatForm(props: RatFormProps) {
     const [commonMessage, setMessage] = useState<string>("");
@@ -14,9 +14,9 @@ function RatForm(props: RatFormProps) {
 
     function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
-        let reducedFormData = {};
+        let reducedFormData: FormData = {};
 
-        if (props.entityName)
+        if (Array.isArray(props.formData))
         {
             props.formData.forEach(function (formEntry) {
                 reducedFormData[formEntry.name] = formEntry.value;
@@ -29,7 +29,7 @@ function RatForm(props: RatFormProps) {
 
         axios.post(props.apiSource, data)
             .then(function (result) {
-                if (result.data.errors) {
+                if (props.formErrors && result.data.errors) {
                     props.formErrors(result.data.errors);
                 } else {
                     props.formSubmit();
@@ -83,14 +83,14 @@ function RatForm(props: RatFormProps) {
 export default RatForm;
 
 type RatFormProps = {
-    entityName: string;
+    entityName?: string;
     apiSource: string;
     class: string;
-    formData: Array<FormEntry>;
+    formData: FormData | Array<FormEntry>;
     buttonContent: string;
-    showCancelButton: boolean;
+    showCancelButton?: boolean;
     showBackButton: boolean;
     children: ReactNode;
     formSubmit: () => void;
-    formErrors: (errors: Array<ValidationResult>) => void;
+    formErrors?: (errors: Array<ValidationResult>) => void;
 }

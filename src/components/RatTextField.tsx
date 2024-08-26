@@ -28,8 +28,8 @@ export default RatTextField;
 type TextFieldProps = {
     name: string;
     label: string;
-    value: string;
-    error: boolean;
-    errorMessage: string;
+    value?: string;
+    error?: boolean;
+    errorMessage?: string;
     callback: (state: FormControlState) => void;
 }

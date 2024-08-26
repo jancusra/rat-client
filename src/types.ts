@@ -7,6 +7,10 @@ export type Language = {
     twoLetterCode: string;
 }
 
+export type LocaleContext = {
+    [key: string]: string
+}
+
 export type UserData = {
     email?: string;
     isAdmin?: boolean;
@@ -16,8 +20,4 @@ export type UserData = {
 export type UserContext = {
     data: UserData;
     getUserData: () => void;
-}
-
-export type LocaleContext = {
-    [key: string]: string
 }
