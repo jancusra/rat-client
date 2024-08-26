@@ -13,8 +13,8 @@ function RatWebHeader() {
         window.location.reload();        
     }
 
-    function setLanguage(id) {
-        localStorage.setItem("languageId", id);
+    function setLanguage(id: number) {
+        localStorage.setItem("languageId", id.toString());
         window.location.reload();
     }
 

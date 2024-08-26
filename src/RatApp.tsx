@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import RatAdminRoutes from './admin/RatAdminRoutes';

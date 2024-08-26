@@ -15,7 +15,7 @@ function RatMultiSelect(props: MultiSelectProps) {
             return x.id;
         });
 
-        if (props.callback != undefined)
+        if (props.callback)
         {
             props.callback({
                 name: props.name,
