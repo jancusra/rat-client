@@ -19,13 +19,13 @@ function RatCommonForm(props: CommonFormProps) {
         if (props.entityId)
         {
             axios.post("/entity/getentity/", { id: parseInt(props.entityId), entityName: props.entityName })
-            .then(function (response) {
-                setFormData(response.data);
+                .then(function (response) {
+                    setFormData(response.data);
 
-                response.data.forEach(function (entry: FormEntry) {
-                    validationData[entry.name] = { error: false, message: '' };
+                    response.data.forEach(function (entry: FormEntry) {
+                        validationData[entry.name] = { error: false, message: '' };
+                    });
                 });
-            });
         }
     }
 

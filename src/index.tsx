@@ -1,11 +1,12 @@
-import React from 'react';
 import ReactDOM from "react-dom/client";
 import RatApp from './RatApp';
 import './css/styles';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <RatApp />
-  </React.StrictMode>
-);
+// should prevent double rendering in development mode
+const root = document.getElementById('root');
+
+if (root) {
+  ReactDOM.createRoot(root).render(
+    <RatApp/>
+  );
+}
